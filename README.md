@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -10,3 +11,7 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+=======
+# Employee-Management-System
+An employee management application built to help businesses and teams effectively organize and manage their workforce. This project offers features for maintaining detailed employee profiles, ensuring easy access to crucial information.
+>>>>>>> 66fe27f5a6e78a5b3fc6ea7e9173cd402424e7d7
