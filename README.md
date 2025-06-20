@@ -1,17 +1,26 @@
-<<<<<<< HEAD
-# React + Vite
+# 👩‍💼 Employee Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A robust and user-friendly Employee Management System for managing employees, tasks, and performance metrics. Ideal for businesses and HR departments to efficiently handle employee data and monitor task progress.
 
-Currently, two official plugins are available:
+## 📌 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔐 **Role-based login system** (Admin and Employee)
+- 🧾 **Add, edit, delete, and view employees**
+- ✅ **Task assignment and status tracking**
+  - New, Active, Completed, Failed
+- 📊 **Dashboard with task statistics**
+- 🔍 **Search and filter functionality**
+- 📅 **Real-time updates and performance logs**
+- 📱 Fully responsive interface
 
-## Expanding the ESLint configuration
+## 🛠 Technologies Used
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# Employee-Management-System
-An employee management application built to help businesses and teams effectively organize and manage their workforce. This project offers features for maintaining detailed employee profiles, ensuring easy access to crucial information.
->>>>>>> 66fe27f5a6e78a5b3fc6ea7e9173cd402424e7d7
+- **Frontend**
+  - React.js
+  - HTML5 & CSS3
+  - Tailwind CSS
+- **Local Storage**
+
+
+## 📂 Project Structure
+
