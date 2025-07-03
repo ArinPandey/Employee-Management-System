@@ -45,6 +45,38 @@ function App() {
     }
   },[]);
 
+  // Add this useEffect after your existing useEffect
+useEffect(() => {
+    const handleStorageChange = () => {
+        if (user === 'employee') {
+            const updatedEmployees = JSON.parse(localStorage.getItem('employees')) || []
+            const updatedLoggedInUser = updatedEmployees.find(emp => emp.email === loggedInUserData?.email)
+            if (updatedLoggedInUser) {
+                setLoggedInUserData(updatedLoggedInUser)
+            }
+        }
+    }
+    
+    // Listen for storage changes
+    window.addEventListener('storage', handleStorageChange)
+    
+    // Also check periodically (for same-tab updates)
+    const interval = setInterval(() => {
+        if (user === 'employee' && loggedInUserData) {
+            const updatedEmployees = JSON.parse(localStorage.getItem('employees')) || []
+            const updatedLoggedInUser = updatedEmployees.find(emp => emp.email === loggedInUserData.email)
+            if (updatedLoggedInUser && JSON.stringify(updatedLoggedInUser) !== JSON.stringify(loggedInUserData)) {
+                setLoggedInUserData(updatedLoggedInUser)
+            }
+        }
+    }, 1000)
+    
+    return () => {
+        window.removeEventListener('storage', handleStorageChange)
+        clearInterval(interval)
+    }
+}, [user, loggedInUserData])
+
   const handleLogin = (email,password) => {
     if(email === "admin@me.com" && password === "123"){
       // console.log("This is admin")

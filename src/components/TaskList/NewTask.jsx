@@ -1,37 +1,73 @@
-import React from 'react'
 
-// const NewTask = () => {
-//   return (
-//     <div className="flex-shrink-0 h-full w-[300px] p-5 bg-red-400 rounded-xl">
-//     	<div className="flex justify-between items-center">
-//     		<h3 className="bg-red-600 text-sm px-3 py-1 rounded">High</h3>
-//     		<h4 className="text-sm">20 feb 2024</h4>
-//     	</div>
-//     	<h2 className="mt-5 text-2xl font-semibold">Make a Youtube video</h2>
-//     	<p className="text-sm mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit, Doloribus ,njbfbkjsdc hcncnhfnfnn fhfdhf</p>
 
-//     	<div className="mt-4">
-//     		<button>Accept Task</button>
-//     	</div>
-//     <div/>	
-//   )
-// }
-const NewTask = ({data}) => {
+import React, { useContext } from 'react'
+import { AuthContext } from '../../context/AuthProvider'
+
+const NewTask = ({ data }) => {
+  const [userData, setUserData] = useContext(AuthContext)
+  
+  const handleAcceptTask = () => {
+    // Get current logged in user
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'))
+    const currentUserEmail = loggedInUser.data.email
+    
+    // Update the task status and user data
+    const updatedData = userData.map(employee => {
+      if (employee.email === currentUserEmail) {
+        const updatedTasks = employee.tasks.map(task => {
+          if (task.title === data.title && task.date === data.date) {
+            return {
+              ...task,
+              newTask: false,
+              active: true
+            }
+          }
+          return task
+        })
+        
+        return {
+          ...employee,
+          tasks: updatedTasks,
+          taskCount: {
+            ...employee.taskCount,
+            newTask: employee.taskCount.newTask - 1,
+            active: employee.taskCount.active + 1
+          }
+        }
+      }
+      return employee
+    })
+    
+    // Update context and localStorage
+    setUserData(updatedData)
+    localStorage.setItem('employees', JSON.stringify(updatedData))
+    
+    // Update logged in user data
+    const updatedLoggedInUser = updatedData.find(emp => emp.email === currentUserEmail)
+    localStorage.setItem('loggedInUser', JSON.stringify({
+      role: 'employee',
+      data: updatedLoggedInUser
+    }))
+  }
+  
   return (
     <div className="flex-shrink-0 h-full w-[300px] p-5 bg-yellow-700 rounded-xl">
-    	<div className="flex justify-between items-center">
-    		<h3 className="bg-red-600 text-sm px-3 py-1 rounded">{data.category}</h3>
-    		<h4 className="text-sm">{data.date}</h4>
-    	</div>
-    	<h2 className="mt-5 text-2xl font-semibold">{data.title}</h2>
-    	<p className="text-sm mt-2">{data.description}</p>
-
-    	<div className="mt-4">
-    	    <button className="w-full">Accept Task</button>
-    	</div>
+      <div className="flex justify-between items-center">
+        <h3 className="bg-red-600 text-sm px-3 py-1 rounded">{data.category}</h3>
+        <h4 className="text-sm">{data.date}</h4>
+      </div>
+      <h2 className="mt-5 text-2xl font-semibold">{data.title}</h2>
+      <p className="text-sm mt-2">{data.description}</p>
+      <div className="mt-4">
+        <button 
+          onClick={handleAcceptTask}
+          className="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded text-white"
+        >
+          Accept Task
+        </button>
+      </div>
     </div>
-
   )
 }
 
-export default NewTask 
+export default NewTask

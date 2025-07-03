@@ -14,31 +14,72 @@ const CreateTask = () => {
 	const [newTask,setNewTask] = useState({})
 
 	const submitHandler = (e) => {
-		e.preventDefault()
+		// e.preventDefault()
 
-		setNewTask({title,description,date,category,active:false,newTask:true,failed:false,completed:false})
+		// setNewTask({title,description,date,category,active:false,newTask:true,failed:false,completed:false})
 
-		const data = userData
+		// const data = userData
 
-		data.forEach(function(elem){
-			if(assignTo == elem.firstname){
-			elem.tasks.push(newTask)
-			console.log(elem);
-		}
-		})
-		setUserData(data)
-		console.log(data)
+		// data.forEach(function(elem){
+		// 	if(assignTo == elem.firstname){
+		// 	elem.tasks.push(newTask)
+		// 	console.log(elem);
+		// }
+		// })
+		// setUserData(data)
+		// console.log(data)
 
-		// localStorage.setItem('employees',JSON.stringify(data))
+		// // localStorage.setItem('employees',JSON.stringify(data))
 
-		// console.log(JSON.parse(data))
-		// console.log(task)
-		// console.log(taskTitle, taskDescription, taskDate, assignTo, category)
-		setTaskTitle('')
-		setAssignTo("")
-		setCategory("")
-		setTaskDescription("")
-		setTaskDate("")
+		// // console.log(JSON.parse(data))
+		// // console.log(task)
+		// // console.log(taskTitle, taskDescription, taskDate, assignTo, category)
+		// setTaskTitle('')
+		// setAssignTo("")
+		// setCategory("")
+		// setTaskDescription("")
+		// setTaskDate("")
+		    e.preventDefault()
+    
+    // Create the new task object
+    const newTaskObj = {
+        title,
+        description,
+        date,
+        category,
+        active: false,
+        newTask: true,
+        failed: false,
+        completed: false
+    }
+    
+    // Create a copy of userData to avoid mutating state directly
+    const updatedData = userData.map(employee => {
+        if (assignTo === employee.firstname) {
+            return {
+                ...employee,
+                tasks: [...employee.tasks, newTaskObj],
+                taskCount: {
+                    ...employee.taskCount,
+                    newTask: employee.taskCount.newTask + 1
+                }
+            }
+        }
+        return employee
+    })
+    
+    // Update the context state
+    setUserData(updatedData)
+    
+    // Update localStorage
+    localStorage.setItem('employees', JSON.stringify(updatedData))
+    
+    // Clear form fields
+    setTaskTitle('')
+    setAssignTo('')
+    setCategory('')
+    setTaskDescription('')
+    setTaskDate('')
 	}
 
   return (
