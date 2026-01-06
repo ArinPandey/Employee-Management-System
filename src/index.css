@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/*@import "tailwindcss";
 
 *{
 	font-family: gilroy;
@@ -16,4 +16,27 @@ body{
 
 #tasklist::-webkit-scrollbar{
 	display: none;
+}*/
+
+@import "tailwindcss";
+
+/* 1. Apply Archivo to everything */
+* {
+    font-family: "Archivo", sans-serif;
+    color: #fff; /* Keeps your white text default */
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background: #111;
+}
+
+/* Scrollbar Hiding */
+#tasklist::-webkit-scrollbar {
+    display: none;
 }

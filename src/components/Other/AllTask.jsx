@@ -9,9 +9,9 @@ const AllTask = () => {
 
 
   return (
-    <div className="bg-[#1c1c1c] p-5 rounded mt-10 h-55">
+    <div className="bg-white/20 p-5 rounded mt-10 h-55">
 
-      <div className="py-2 px-4 flex justify-between rounded mb-2 bg-stone-700">
+      <div className="py-2 px-4 flex justify-between rounded mb-2 bg-stone-600">
             <h2 className="w-1/5 !text-amber-400">Employee Name</h2>
             <h3 className="w-1/5 !text-sky-400">New Task</h3>
             <h5 className="w-1/5 !text-green-400">Active</h5>
@@ -22,7 +22,7 @@ const AllTask = () => {
         <div className="h-[80%] overflow-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {userData.map(function(elem,idx){
           return(
-              <div key={idx} className="py-2 px-4 flex justify-between rounded mb-2 bg-stone-700">
+              <div key={idx} className="py-2 px-4 flex justify-between rounded mb-2 bg-stone-600">
                 <h2 className="w-1/5 bg-stone-500">{elem.firstname}</h2>
                 <h3 className="w-1/5 bg-stone-500">{elem.taskCount.newTask}</h3>
                 <h5 className="w-1/5 bg-stone-500">{elem.taskCount.active}</h5>

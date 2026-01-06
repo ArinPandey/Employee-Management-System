@@ -51,9 +51,9 @@ const NewTask = ({ data }) => {
   }
   
   return (
-    <div className="flex-shrink-0 h-full w-[300px] p-5 bg-yellow-700 rounded-xl">
+    <div className="flex-shrink-0 h-full w-[300px] p-5 bg-white/50 rounded-xl">
       <div className="flex justify-between items-center">
-        <h3 className="bg-red-600 text-sm px-3 py-1 rounded">{data.category}</h3>
+        <h3 className="bg-indigo-700 text-sm px-3 py-1 rounded">{data.category}</h3>
         <h4 className="text-sm">{data.date}</h4>
       </div>
       <h2 className="mt-5 text-2xl font-semibold">{data.title}</h2>
@@ -61,7 +61,7 @@ const NewTask = ({ data }) => {
       <div className="mt-4">
         <button 
           onClick={handleAcceptTask}
-          className="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded text-white"
+          className="w-full bg-indigo-700 hover:bg-fuchsia-700 py-2 px-4 rounded text-white"
         >
           Accept Task
         </button>
