@@ -14,72 +14,49 @@ const CreateTask = () => {
 	const [newTask,setNewTask] = useState({})
 
 	const submitHandler = (e) => {
-		// e.preventDefault()
+		e.preventDefault()
 
-		// setNewTask({title,description,date,category,active:false,newTask:true,failed:false,completed:false})
-
-		// const data = userData
-
-		// data.forEach(function(elem){
-		// 	if(assignTo == elem.firstname){
-		// 	elem.tasks.push(newTask)
-		// 	console.log(elem);
-		// }
-		// })
-		// setUserData(data)
-		// console.log(data)
-
-		// // localStorage.setItem('employees',JSON.stringify(data))
-
-		// // console.log(JSON.parse(data))
-		// // console.log(task)
-		// // console.log(taskTitle, taskDescription, taskDate, assignTo, category)
-		// setTaskTitle('')
-		// setAssignTo("")
-		// setCategory("")
-		// setTaskDescription("")
-		// setTaskDate("")
-		    e.preventDefault()
-    
-    // Create the new task object
-    const newTaskObj = {
-        title,
-        description,
-        date,
-        category,
-        active: false,
-        newTask: true,
-        failed: false,
-        completed: false
+    // 1. VALIDATION CHECK: Stop if any important field is missing
+    if (!title || !date || !assignTo || !category || !description) {
+        alert("Please fill in all fields before creating a task.")
+        return // This stops the function here. No task is created.
     }
+
+    // 2. Create the Task Object (Only happens if fields are full)
+    const newTask = { 
+        title, 
+        description, 
+        date, 
+        category, 
+        active: false, 
+        newTask: true, 
+        failed: false, 
+        completed: false 
+    }
+
+    const data = userData
     
-    // Create a copy of userData to avoid mutating state directly
-    const updatedData = userData.map(employee => {
-        if (assignTo === employee.firstname) {
-            return {
-                ...employee,
-                tasks: [...employee.tasks, newTaskObj],
-                taskCount: {
-                    ...employee.taskCount,
-                    newTask: employee.taskCount.newTask + 1
-                }
-            }
+    // 3. Find the employee and add the task
+    data.forEach(function (elem) {
+        if (assignTo == elem.firstname) {
+            elem.tasks.push(newTask)
+            
+            // OPTIONAL: Update the task counts immediately for better UX
+            elem.taskCount.newTask = elem.taskCount.newTask + 1
         }
-        return employee
     })
     
-    // Update the context state
-    setUserData(updatedData)
+    setUserData(data)
     
-    // Update localStorage
-    localStorage.setItem('employees', JSON.stringify(updatedData))
-    
-    // Clear form fields
+    // 4. Save to LocalStorage (So data stays after refresh)
+    localStorage.setItem('employees', JSON.stringify(data));
+
+    // 5. Clear the form
     setTaskTitle('')
-    setAssignTo('')
-    setCategory('')
-    setTaskDescription('')
-    setTaskDate('')
+    setAssignTo("")
+    setCategory("")
+    setTaskDescription("")
+    setTaskDate("")
 	}
 
   return (
