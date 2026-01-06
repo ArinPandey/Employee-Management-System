@@ -61,7 +61,7 @@ const NewTask = ({ data }) => {
       <div className="mt-4">
         <button 
           onClick={handleAcceptTask}
-          className="w-full bg-indigo-700 hover:bg-fuchsia-700 py-2 px-4 rounded text-white"
+          className="w-full bg-indigo-700 hover:bg-fuchsia-700 py-2 px-4 rounded text-white cursor-pointer"
         >
           Accept Task
         </button>

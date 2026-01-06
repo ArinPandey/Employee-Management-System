@@ -64,13 +64,13 @@ const AcceptTask = ({ data }) => {
       <div className="flex justify-between mt-4">
         <button 
           onClick={() => handleTaskUpdate('completed')}
-          className="bg-indigo-700 hover:bg-fuchsia-700 px-2 py-1 text-sm rounded"
+          className="bg-indigo-700 hover:bg-fuchsia-700 px-2 py-1 text-sm rounded cursor-pointer"
         >
           Mark as completed
         </button>
         <button 
           onClick={() => handleTaskUpdate('failed')}
-          className="bg-indigo-700 hover:bg-fuchsia-700 px-2 py-1 text-sm rounded"
+          className="bg-indigo-700 hover:bg-fuchsia-700 px-2 py-1 text-sm rounded cursor-pointer"
         >
           Mark as failed
         </button>

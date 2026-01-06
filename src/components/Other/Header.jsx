@@ -31,7 +31,7 @@ const Header = (props) => {
         </span>
       </h1>
 
-    	<button onClick={logOutUser} className="bg-zinc-800 hover:bg-stone-700 rounded-sm text-white py-3 px-3">Log Out</button>
+    	<button onClick={logOutUser} className="bg-zinc-800 hover:bg-stone-700 rounded-sm text-white py-3 px-3 cursor-pointer">Log Out</button>
 
     </div>
   )

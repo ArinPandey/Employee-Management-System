@@ -13,7 +13,7 @@ const CompleteTask = ({ data }) => {
       <p className="text-sm mt-2 text-gray-200">{data.description}</p>
       
       <div className="mt-4">
-        <div className="w-full bg-indigo-700 hover:bg-fuchsia-700 py-2 px-4 rounded text-white text-center">
+        <div className="w-full bg-indigo-700 hover:bg-fuchsia-700 py-2 px-4 rounded text-white text-center cursor-pointer">
           ✓ Completed
         </div>
       </div>

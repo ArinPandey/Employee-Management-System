@@ -63,7 +63,7 @@ const Login = ({handleLogin}) => {
             className="border-2 border-emerald-500 text-white outline-none bg-transparent rounded-full py-4 px-5 mt-3"
           />
 
-          <button className="border-2 border-emerald-500 text-white outline-none bg-emerald-600 rounded-full py-4 px-4 mt-5">
+          <button className="border-2 border-emerald-500 text-white outline-none bg-emerald-600 rounded-full py-4 px-4 mt-5 cursor-pointer">
             log in
           </button>
         </form>
